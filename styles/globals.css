@@ -1,0 +1,16 @@
+/* Global styles (adapted from original HTML) */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body, #__next { height: 100%; }
+body { background: #050510; font-family: 'Segoe UI', system-ui, -apple-system, Arial; color: #fff; overflow: hidden; }
+
+/* Billboards and panels can be re-added as needed — scene focuses on full-screen canvas */
+.hint {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255,255,255,0.35);
+  font-size: 12px;
+  z-index: 10;
+  pointer-events: none;
+}
