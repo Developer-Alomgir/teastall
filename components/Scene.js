@@ -238,17 +238,16 @@ export default function Scene() {
       steamParts.push(s);
     }
 
-
-    // GLTF loader - looks for /models/tomcat.glb (user-supplied)
-    const loader = new GLTFLoader();
-    loader.load('/models/tomcat.glb', gltf => {
-      const tom = gltf.scene;
-      tom.position.set(0,0,1.2);
-      tom.scale.set(1.0,1.0,1.0);
-      scene.add(tom);
-    }, undefined, () => {
-      console.log('No tomcat.glb found; using placeholder.');
-    });
+    // Keeper simplified (improved materials)
+    const keeper = new THREE.Group();
+    const torso = cyl(0.4,0.35,1.1,0x2d5a27,12);
+    torso.position.y = 1.3;
+    keeper.add(torso);
+    const head = new THREE.Mesh(new THREE.SphereGeometry(0.32, 32, 32), new THREE.MeshStandardMaterial({ color:0xffdbac, roughness:0.8 }));
+    head.position.y = 2.15;
+    keeper.add(head);
+    keeper.position.set(0,0.5,1.2);
+    scene.add(keeper);
 
     // Cups on counter (higher poly)
     const cups = [];
