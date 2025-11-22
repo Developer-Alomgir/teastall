@@ -227,19 +227,15 @@ export default function Scene() {
     cupGroup.position.set(4.2,6.5,3.8);
     scene.add(cupGroup);
 
-    // snow particles
-    const snowCount = 1500;
-    const positions = new Float32Array(snowCount*3);
-    for (let i=0;i<snowCount;i++){
-      positions[i*3+0] = (Math.random()-0.5)*60;
-      positions[i*3+1] = Math.random()*30 + 2;
-      positions[i*3+2] = (Math.random()-0.5)*30;
-    }
-    const snowGeo = new THREE.BufferGeometry();
-    snowGeo.setAttribute('position', new THREE.BufferAttribute(positions,3));
-    const snowMat = new THREE.PointsMaterial({ size: 0.08, color: 0xffffff, transparent:true, opacity:0.9 });
-    const snow = new THREE.Points(snowGeo, snowMat);
-    scene.add(snow);
+
+    // Steam particles (soft spheres)
+    const steamParts = [];
+    for(let i=0;i<20;i++){
+      const s = new THREE.Mesh(new THREE.SphereGeometry(0.07, 12, 12), new THREE.MeshStandardMaterial({ color: 0xffffff, transparent:true, opacity:0.7 }));
+      s.position.set(4.2, 7 + Math.random()*0.6, 3.8);
+      s.userData = { spd: 0.006 + Math.random()*0.01, off: Math.random()*Math.PI*2, startY:7 };
+      scene.add(s);
+      steamParts.push(s);
     }
 
     // Keeper simplified (improved materials)
