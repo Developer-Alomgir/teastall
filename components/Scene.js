@@ -315,16 +315,7 @@ export default function Scene() {
       const cup = createCup(p[0], p[1], cupCols[i]);
       scene.add(cup); cups.push(cup);
     });
-    const bottle = new THREE.Mesh(new THREE.CylinderGeometry(0.08,0.08,0.4,32), new THREE.MeshStandardMaterial({ color:0x2f6b2f, roughness:0.4 }));
-    bottle.position.set(-0.3,1.6,2.9);
-    tray.add(bottle);
-    const plate = new THREE.Mesh(new THREE.CylinderGeometry(0.5,0.5,0.04,64), new THREE.MeshStandardMaterial({ color:0xf2f2f2, roughness:0.8 }));
-    plate.position.set(0.6,1.42,2.9);
-    tray.add(plate);
-    const fruitColors = [0xff6347, 0xffd700, 0xff8c00];
-    for (let i=0;i<3;i++){
-      const f = new THREE.Mesh(new THREE.SphereGeometry(0.12,24,24), new THREE.MeshStandardMaterial({ color: fruitColors[i], roughness:0.6 }));
-      
+   
     // Stools
     const stools = [];
     const createStool = (x,z)=>{
