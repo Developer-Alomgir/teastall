@@ -171,8 +171,40 @@ export default function Scene() {
     const signInner = box(5.9,1.4,0.22,0x080812);
     signInner.position.z = 0.12;
     signGroup.add(signInner);
+     
+    // Canvas texture for text (good quality)
+    const createTextTexture = (text, fontSize, color, bgColor) => {
+      const canvas = document.createElement('canvas');
+      canvas.width = 1024;
+      canvas.height = 256;
+      const ctx = canvas.getContext('2d');
+      ctx.fillStyle = bgColor;
+      ctx.fillRect(0,0,canvas.width,canvas.height);
+      ctx.font = `bold ${fontSize}px Arial`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.shadowColor = color;
+      ctx.shadowBlur = 30;
+      ctx.fillStyle = color;
+      ctx.fillText(text, canvas.width/2, canvas.height/2);
+      const texture = new THREE.CanvasTexture(canvas);
+      texture.encoding = THREE.sRGBEncoding;
+      texture.needsUpdate = true;
+      return texture;
+    };
 
-    
+    const textTexture = createTextTexture('COFFEE MAMA', 140, '#00ffa3', '#080812');
+    const textPlane = new THREE.Mesh(new THREE.PlaneGeometry(5.5,1.2), new THREE.MeshBasicMaterial({ map: textTexture, transparent: true }));
+    textPlane.position.z = 0.25;
+    signGroup.add(textPlane);
+
+    const signGlow = new THREE.PointLight(0x00ffa3, 3, 12);
+    signGlow.position.set(0,0,2);
+    signGroup.add(signGlow);
+
+    signGroup.position.set(0,6.5,3.5);
+    scene.add(signGroup);
+
     // banner (canvas texture with Bangla)
     const makeBannerTexture = (title, subtitle) => {
       const canvas = document.createElement('canvas'); canvas.width = 2048; canvas.height = 512;
