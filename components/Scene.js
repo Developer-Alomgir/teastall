@@ -43,6 +43,22 @@ export default function Scene() {
 
     // Lights
     scene.add(new THREE.AmbientLight(0x6040a0, 0.6));
+    
+    const ambient = new THREE.AmbientLight(0x9bb7ff, 0.25);
+    scene.add(ambient);
+    const directional = new THREE.DirectionalLight(0xffffff, 0.9);
+    directional.position.set(-5, 10, 5);
+    directional.castShadow = true;
+    scene.add(directional);
+    const interior = new THREE.PointLight(0xffe7c9, 1.8, 20);
+    interior.position.set(0, 3.2, 2.5);
+    scene.add(interior);
+    const neonLeft = new THREE.PointLight(0xff69b4, 1.2, 12);
+    neonLeft.position.set(-6, 4.2, 2.5);
+    scene.add(neonLeft);
+    const neonRight = new THREE.PointLight(0x00ffff, 1.2, 12);
+    neonRight.position.set(6, 4.2, 2.5);
+    scene.add(neonRight);
 
     const mainLight = new THREE.DirectionalLight(0xffeedd, 0.9);
     mainLight.position.set(5, 12, 8);
