@@ -79,6 +79,11 @@ export default function Scene() {
     warmLight.position.set(0, 3, 4);
     scene.add(warmLight);
 
+    
+    const ground = new THREE.Mesh(new THREE.PlaneGeometry(80,80), new THREE.MeshStandardMaterial({ color: 0x071028, roughness: 0.95 }));
+    ground.rotation.x = -Math.PI/2; ground.receiveShadow = true; scene.add(ground);
+
+
     // Helpers - material factories
     const box = (w,h,d,col,opts={})=>{
       const m = new THREE.MeshStandardMaterial({
