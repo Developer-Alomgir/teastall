@@ -133,14 +133,32 @@ export default function Scene() {
     shop.add(floor);
 
     // Counter (with smoothness and metalness)
-    const counterTop = box(6,0.2,1.4,0xdeb887, { r: 0.3, m: 0.1 });
-    counterTop.position.set(0,1.4,2.2);
+    const counterTop = box(6,0.28,1.6,0xd6b89a,{r:0.3,m:0.05});
+    counterTop.position.set(0,1.3,2.6);
     shop.add(counterTop);
-
-    const counterBody = box(6,1.4,1.3,0xb8733d, { r:0.7 });
-    counterBody.position.set(0,0.7,2.2);
+    const counterBody = box(6,1.5,1.5,0x6b3f2b,{r:0.7});
+    counterBody.position.set(0,0.5,2.6);
     shop.add(counterBody);
 
+    const machine = new THREE.Group();
+    const mbody = box(1.2,1.4,0.9,0xc0c0c0,{m:0.9,r:0.15});
+    mbody.position.y = 0.7;
+    machine.add(mbody);
+    const mtop = box(1.25,0.18,0.95,0x8b0000);
+    mtop.position.y = 1.35;
+    machine.add(mtop);
+    for (let i=0;i<3;i++){
+      const knob = new THREE.Mesh(new THREE.CylinderGeometry(0.06,0.06,0.06,16), new THREE.MeshStandardMaterial({color:0x222222}));
+      knob.rotation.x = Math.PI/2;
+      knob.position.set(-0.3 + i*0.3, 1.05, 0.45);
+      machine.add(knob);
+    }
+    machine.position.set(-1.8,1.3,2.2);
+    shop.add(machine);
+
+    const oven = box(1.6,1.2,0.9,0x333333,{r:0.6});
+    oven.position.set(2.2,0.6,2.2);
+    shop.add(oven);
     // Roof and neon trims - slightly higher poly by adding thin extruded boxes
     const roof = box(9,0.5,7,0x9932cc, { e:0x6b238e, ei:0.5, m:0.4, r:0.2 });
     roof.position.set(0,5.25,0);
