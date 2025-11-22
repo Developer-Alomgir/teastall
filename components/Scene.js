@@ -255,6 +255,17 @@ export default function Scene() {
       scene.add(s);
       steamParts.push(s);
     }
+    
+    // GLTF loader - looks for /models/tomcat.glb (user-supplied)
+    const loader = new GLTFLoader();
+    loader.load('/models/tomcat.glb', gltf => {
+      const tom = gltf.scene;
+      tom.position.set(0,0,1.2);
+      tom.scale.set(1.0,1.0,1.0);
+      scene.add(tom);
+    }, undefined, () => {
+      console.log('No tomcat.glb found; using placeholder.');
+    });
 
     // Keeper simplified (improved materials)
     const keeper = new THREE.Group();
