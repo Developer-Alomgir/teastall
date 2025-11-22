@@ -1,9 +1,16 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Global styles (adapted from original HTML) */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body, #__next { height: 100%; }
+body { background: #050510; font-family: 'Segoe UI', system-ui, -apple-system, Arial; color: #fff; overflow: hidden; }
 
-:root { --glass-bg: rgba(255,255,255,0.04); --glass-border: rgba(255,255,255,0.08); }
-html,body,#__next{height:100%}
-body{font-family:Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; background: linear-gradient(180deg,#071028 0%, #050610 100%); color:white; overflow:hidden;}
-.backdrop-blur { backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
-.glass { background: var(--glass-bg); border: 1px solid var(--glass-border); }
+/* Billboards and panels can be re-added as needed — scene focuses on full-screen canvas */
+.hint {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255,255,255,0.35);
+  font-size: 12px;
+  z-index: 10;
+  pointer-events: none;
+}
