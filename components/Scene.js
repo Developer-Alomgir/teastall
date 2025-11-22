@@ -324,11 +324,7 @@ export default function Scene() {
     const fruitColors = [0xff6347, 0xffd700, 0xff8c00];
     for (let i=0;i<3;i++){
       const f = new THREE.Mesh(new THREE.SphereGeometry(0.12,24,24), new THREE.MeshStandardMaterial({ color: fruitColors[i], roughness:0.6 }));
-      f.position.set(0.45 + i*0.18,1.55,2.9);
-      tray.add(f);
-    }
-    shop.add(tray);
-
+      
     // Stools
     const stools = [];
     const createStool = (x,z)=>{
