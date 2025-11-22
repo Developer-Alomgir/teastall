@@ -205,6 +205,24 @@ export default function Scene() {
     signGroup.position.set(0,6.5,3.5);
     scene.add(signGroup);
 
+    
+    // banner (canvas texture with Bangla)
+    const makeBannerTexture = (title, subtitle) => {
+      const canvas = document.createElement('canvas'); canvas.width = 2048; canvas.height = 512;
+      const ctx = canvas.getContext('2d');
+      ctx.fillStyle = '#071028'; ctx.fillRect(0,0,canvas.width,canvas.height);
+      ctx.fillStyle = '#00ffa3'; ctx.font = 'bold 160px sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText(title, canvas.width/2, 200);
+      ctx.fillStyle = '#ffffff'; ctx.font = '48px sans-serif';
+      ctx.fillText(subtitle, canvas.width/2, 320);
+      return new THREE.CanvasTexture(canvas);
+    };
+    const bannerTex = makeBannerTexture('কফি মামা', 'চা • কফি • গরম টিফিন — স্বাদে গুণগত মান');
+    const banner = new THREE.Mesh(new THREE.PlaneGeometry(6,1.4), new THREE.MeshBasicMaterial({ map: bannerTex, toneMapped:false, transparent:true }));
+    banner.position.set(0,5.5,3.5); scene.add(banner);
+    const bannerLight = new THREE.PointLight(0x00ffa3, 2.0, 10); bannerLight.position.set(0,5.5,3.8); scene.add(bannerLight);
+
+
     // High-render coffee cup (lathe geometry)
     const cupGroup = new THREE.Group();
     const pts = [];
