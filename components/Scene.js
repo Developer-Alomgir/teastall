@@ -315,9 +315,6 @@ export default function Scene() {
       const cup = createCup(p[0], p[1], cupCols[i]);
       scene.add(cup); cups.push(cup);
     });
-    const glass = new THREE.Mesh(new THREE.CylinderGeometry(0.12,0.12,0.28,32), new THREE.MeshStandardMaterial({ color:0xffffff, roughness:0.05, metalness:0.0, transparent:true, opacity:0.9 }));
-    glass.position.set(-0.7,1.45,2.9);
-    tray.add(glass);
     const bottle = new THREE.Mesh(new THREE.CylinderGeometry(0.08,0.08,0.4,32), new THREE.MeshStandardMaterial({ color:0x2f6b2f, roughness:0.4 }));
     bottle.position.set(-0.3,1.6,2.9);
     tray.add(bottle);
