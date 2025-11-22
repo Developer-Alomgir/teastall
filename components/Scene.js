@@ -216,7 +216,7 @@ export default function Scene() {
       ctx.fillText(subtitle, canvas.width/2, 320);
       return new THREE.CanvasTexture(canvas);
     };
-    const bannerTex = makeBannerTexture('কফি মামা', 'চা • কফি • গরম টিফিন — স্বাদে গুণগত মান');
+    const bannerTex = makeBannerTexture('চা • কফি • গরম টিফিন — স্বাদে গুণগত মান');
     const banner = new THREE.Mesh(new THREE.PlaneGeometry(6,1.4), new THREE.MeshBasicMaterial({ map: bannerTex, toneMapped:false, transparent:true }));
     banner.position.set(0,5.5,3.5); scene.add(banner);
     const bannerLight = new THREE.PointLight(0x00ffa3, 2.0, 10); bannerLight.position.set(0,5.5,3.8); scene.add(bannerLight);
