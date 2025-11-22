@@ -193,7 +193,7 @@ export default function Scene() {
       return texture;
     };
 
-    const textTexture = createTextTexture('COFFEE MAMA', 140, '#00ffa3', '#080812');
+    const textTexture = createTextTexture('কফি মামা', 140, '#00ffa3', '#080812');
     const textPlane = new THREE.Mesh(new THREE.PlaneGeometry(5.5,1.2), new THREE.MeshBasicMaterial({ map: textTexture, transparent: true }));
     textPlane.position.z = 0.25;
     signGroup.add(textPlane);
